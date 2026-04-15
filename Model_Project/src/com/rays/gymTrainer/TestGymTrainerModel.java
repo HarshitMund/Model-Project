@@ -8,10 +8,10 @@ public class TestGymTrainerModel {
 
 	public static void main(String[] args) throws Exception {
 		
-//		testAdd();
+		testAdd();
 //		testUpdate();
 //		testDelete();
-		testSearch();
+//		testSearch();
 
 	}
 
@@ -20,13 +20,11 @@ public class TestGymTrainerModel {
 		GymTrainierBean bean = new GymTrainierBean();
 		GymTrainerModel model = new GymTrainerModel();
 
-		bean.setTrainerId(16);
 		bean.setTrainerName("Prateek Hota");
 		bean.setSpecialization("Weight Loss");
 		bean.setSalary(30000.00);
 
-		long id = model.add(bean);
-		System.out.println("Record inserted at ID: " + id);
+		model.add(bean);
 	}
 
 	public static void testUpdate() throws Exception {
@@ -57,6 +55,9 @@ public class TestGymTrainerModel {
 		GymTrainierBean bean = new GymTrainierBean();
 		GymTrainerModel model = new GymTrainerModel();
 		List<GymTrainierBean> list = new ArrayList<GymTrainierBean>();
+		
+//		bean.setSpecialization("Yoga");
+		bean.setSpecialization("Pilates");
 		
 		list = model.search(bean, 1, 5);
 		

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GymTrainerModel {
 
-	public long add(GymTrainierBean bean) throws Exception {
+	public void add(GymTrainierBean bean) throws Exception {
 
 		Connection conn = null;
 
@@ -20,7 +20,7 @@ public class GymTrainerModel {
 			conn.setAutoCommit(false);
 
 			PreparedStatement pstm = conn.prepareStatement("insert into gymTrainer values (?, ?, ?, ?)");
-			pstm.setLong(1, bean.getTrainerId());
+			pstm.setLong(1, nextPk());
 			pstm.setString(2, bean.getTrainerName());
 			pstm.setString(3, bean.getSpecialization());
 			pstm.setDouble(4, bean.getSalary());
@@ -37,7 +37,6 @@ public class GymTrainerModel {
 			conn.close();
 		}
 
-		return bean.getTrainerId();
 	}
 
 	public void update(GymTrainierBean bean) throws Exception {
@@ -143,6 +142,28 @@ public class GymTrainerModel {
 		}
 
 		return list;
+	}
+
+	public long nextPk() throws Exception {
+
+		long pk = 0;
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modelproject", "root", "root");
+
+		PreparedStatement pstm = conn.prepareStatement("select max(trainerId) from gymtrainer");
+
+		ResultSet rs = pstm.executeQuery();
+
+		while (rs.next()) {
+			pk = rs.getLong(1);
+		}
+
+		pstm.close();
+		conn.close();
+
+		return pk + 1;
 	}
 
 }
