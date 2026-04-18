@@ -8,10 +8,10 @@ public class TestPolicyModel {
 
 	public static void main(String[] args) throws Exception {
 		
-//		testAdd();
+		testAdd();
 //		testUpdate();
 //		testDelete();
-		testSearch();
+//		testSearch();
 
 	}
 	

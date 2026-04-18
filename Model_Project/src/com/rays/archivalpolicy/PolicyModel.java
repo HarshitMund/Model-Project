@@ -31,6 +31,12 @@ public class PolicyModel {
 	public void add(PolicyBean bean) throws Exception {
 
 		Connection conn = null;
+		
+		PolicyBean existingBean = findByCode(bean.getPolicyCode());
+		
+		if(existingBean != null) {
+			throw new Exception("This Policy Code Already Exist... Try New Code.");
+		}
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -166,6 +172,32 @@ public class PolicyModel {
 		}
 
 		return list;
+	}
+	
+	public PolicyBean findByCode(String policyCode) throws Exception {
+		
+		PolicyBean bean = null;
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modelproject", "root", "root");
+		
+		PreparedStatement pstm = conn.prepareStatement("select * from archivalPolicy where policyCode = ?");
+		pstm.setString(1, policyCode);
+		
+		ResultSet rs = pstm.executeQuery();
+		
+		while(rs.next()) {
+			bean = new PolicyBean();
+			
+			bean.setPolicyId(rs.getLong(1));
+			bean.setPolicyCode(rs.getString(2));
+			bean.setDataType(rs.getString(3));
+			bean.setArchiveAfterDays(rs.getInt(4));
+			bean.setStatus(rs.getString(5));
+		}
+	
+		return bean;
 	}
 
 }
