@@ -1,0 +1,51 @@
+package com.rays.escalationRule;
+
+public class EscalationRuleBean {
+
+	private long ruleId;
+	private String ruleCode;
+	private String level;
+	private String assignedTo;
+	private String status;
+
+	public long getRuleId() {
+		return ruleId;
+	}
+
+	public void setRuleId(long ruleId) {
+		this.ruleId = ruleId;
+	}
+
+	public String getRuleCode() {
+		return ruleCode;
+	}
+
+	public void setRuleCode(String ruleCode) {
+		this.ruleCode = ruleCode;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public String getAssignedTo() {
+		return assignedTo;
+	}
+
+	public void setAssignedTo(String assignedTo) {
+		this.assignedTo = assignedTo;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+}
