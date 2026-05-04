@@ -40,7 +40,7 @@
 		<input type="hidden" name="pageNo" value="<%=pageNo%>">
 
 		<div align="center">
-			<table width="90%" border="1px">
+			<table width="100%" border="1px">
 				<tr>
 					<th>Select</th>
 					<th>Id</th>
@@ -72,12 +72,12 @@
 			</table>
 		</div>
 		<div align="center">
-			<table width="90%">
+			<table width="100%">
 				<tr>
 					<td><input type="submit" name="operation"
 						<%=pageNo == 1 ? "disabled" : ""%> value="previous"></td>
-					<td><input type="submit" name="operation" value="delete"></td>
-					<td><input type="submit" name="operation"
+					<td align="center"><input type="submit" name="operation" value="delete"></td>
+					<td align="right"><input type="submit" name="operation"
 						<%=nextList.size() == 0 ? "disabled" : ""%> value="next"></td>
 				</tr>
 			</table>

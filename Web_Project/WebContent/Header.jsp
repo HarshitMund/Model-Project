@@ -30,6 +30,8 @@
 	<a href="UserRegistrationCtl">Sign Up</a> |
 	<a href="JobAddCtl">Job Add</a> |
 	<a href="JobListCtl">Job List</a> |
+	<a href="TransformationAddCtl">Transformation Add</a> |
+	<a href="TransformationListCtl">Transformation List</a> |
 	<%
 	}
 	%>
