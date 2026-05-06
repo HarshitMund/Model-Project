@@ -19,6 +19,19 @@ public class TransformationAddCtl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		TransformationBean bean = new TransformationBean();
+		TransformationModel model = new TransformationModel();
+		String id = request.getParameter("id");
+
+		if (id != null) {
+			try {
+				bean = model.findByPk(Integer.parseInt(id));
+				request.setAttribute("bean", bean);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		RequestDispatcher rd = request.getRequestDispatcher("TransformationAddView.jsp");
 		rd.forward(request, response);
 	}
@@ -37,8 +50,16 @@ public class TransformationAddCtl extends HttpServlet {
 			bean.setLogic(request.getParameter("logic"));
 			bean.setStatus(request.getParameter("status"));
 
-			model.add(bean);
-			request.setAttribute("successMsg", "Transformation added successfully.");
+			if (op.equalsIgnoreCase("update")) {
+				bean.setId(Integer.parseInt(request.getParameter("id")));
+				model.update(bean);
+				request.setAttribute("bean", bean);
+				request.setAttribute("successMsg", "Transformation Updated successfully");
+			} else {
+				model.add(bean);
+				request.setAttribute("successMsg", "Transformation added successfully.");
+
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
