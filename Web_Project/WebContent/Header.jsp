@@ -32,6 +32,8 @@
 	<a href="JobListCtl">Job List</a> |
 	<a href="TransformationAddCtl">Transformation Add</a> |
 	<a href="TransformationListCtl">Transformation List</a> |
+	<a href="MappingCtl">Data Mapping</a> |
+	<a href="MappingListCtl">Data Mapping List</a>
 	<%
 	}
 	%>

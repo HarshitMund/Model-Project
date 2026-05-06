@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rays.bean.MappingBean;
+import com.rays.exception.DuplicaterecordException;
 import com.rays.util.JDBCDataSource;
 
 public class MappingModel {
@@ -36,6 +37,12 @@ public class MappingModel {
 
 		long pk = 0;
 		Connection conn = null;
+
+		MappingModel model = new MappingModel();
+		MappingBean existingBean = model.findByCode(bean.getCode());
+		if (existingBean != null) {
+			throw new DuplicaterecordException("Code Already Exist");
+		}
 
 		try {
 			pk = nextPk();
@@ -116,6 +123,34 @@ public class MappingModel {
 			conn = JDBCDataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement("select * from dataMapping where id = ?");
 			pstmt.setLong(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				bean = new MappingBean();
+				bean.setId(rs.getLong(1));
+				bean.setCode(rs.getString(2));
+				bean.setSourceField(rs.getString(3));
+				bean.setTargetField(rs.getString(4));
+				bean.setStatus(rs.getString(5));
+			}
+			pstmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+
+		return bean;
+	}
+
+	public MappingBean findByCode(String code) throws Exception {
+
+		MappingBean bean = null;
+		Connection conn = null;
+
+		try {
+			conn = JDBCDataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement("select * from dataMapping where code = ?");
+			pstmt.setString(1, code);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				bean = new MappingBean();

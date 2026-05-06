@@ -53,7 +53,7 @@
 					<td><input type="submit" name="operation" value="search"></td>
 				</tr>
 			</table>
-
+ 
 			<table width="100%" border="1px">
 				<tr>
 					<th>Select</th>
@@ -100,6 +100,8 @@
 		</div>
 
 		<%
+		p
+
 		}
 		%>
 	</form>
