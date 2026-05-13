@@ -33,7 +33,9 @@
 	<a href="TransformationAddCtl">Transformation Add</a> |
 	<a href="TransformationListCtl">Transformation List</a> |
 	<a href="MappingCtl">Data Mapping</a> |
-	<a href="MappingListCtl">Data Mapping List</a>
+	<a href="MappingListCtl">Data Mapping List</a> |
+	<a href="ParkingCtl">Add Smart Parking</a> |
+	<a href="ParkingListCtl">Smart Parking List</a> |
 	<%
 	}
 	%>
