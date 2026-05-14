@@ -36,6 +36,8 @@
 	<a href="MappingListCtl">Data Mapping List</a> |
 	<a href="ParkingCtl">Add Smart Parking</a> |
 	<a href="ParkingListCtl">Smart Parking List</a> |
+	<a href="GamingCtl">Add Gaming Tournament</a> |
+	<a href="GamingListCtl">Gaming List Tournament</a> |
 	<%
 	}
 	%>
