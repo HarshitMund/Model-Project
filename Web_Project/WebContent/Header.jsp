@@ -38,6 +38,9 @@
 	<a href="ParkingListCtl">Smart Parking List</a> |
 	<a href="GamingCtl">Add Gaming Tournament</a> |
 	<a href="GamingListCtl">Gaming List Tournament</a> |
+	<a href="HostelCtl">Add Hostel</a> |
+	<a href="HostelListCtl">Hostel List</a> |
+
 	<%
 	}
 	%>
